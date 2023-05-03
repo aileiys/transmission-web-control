@@ -412,7 +412,7 @@ getTransmissionPath() {
 
 	# 群晖
 	if [ -f "/etc/synoinfo.conf" ]; then
-		ROOT_FOLDER="/var/packages/transmission/target/share/transmission"
+		ROOT_FOLDER=" /var/packages/transmission/target/share/transmission"
 	fi
 
 	if [ ! -d "$ROOT_FOLDER" ]; then
