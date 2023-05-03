@@ -102,9 +102,9 @@ initValues() {
     fi
 	# 判断 ROOT_FOLDER 是否为一个有效的目录，如果是则表明传递了一个有效路径
 	if [ -d "$ROOT_FOLDER" ]; then
-		showLog "$MSG_TR_WORK_FOLDER $ROOT_FOLDER/web"
+		showLog "$MSG_TR_WORK_FOLDER $ROOT_FOLDER/public_html"
 		INSTALL_TYPE=3
-		WEB_FOLDER="$ROOT_FOLDER/web"
+		WEB_FOLDER="$ROOT_FOLDER/public_html"
 		SKIP_SEARCH=1
 	fi
 
@@ -156,16 +156,16 @@ findWebFolder() {
       fi
 		INSTALL_TYPE=2
 	else
-		if [ -d "$ROOT_FOLDER" -a -d "$ROOT_FOLDER/web" ]; then
-			WEB_FOLDER="$ROOT_FOLDER/web"
+		if [ -d "$ROOT_FOLDER" -a -d "$ROOT_FOLDER/public_html" ]; then
+			WEB_FOLDER="$ROOT_FOLDER/public_html"
 			INSTALL_TYPE=1
 			showLog "$ROOT_FOLDER/web $MSG_AVAILABLE."
 		else
 			showLog "$MSG_THE_SPECIFIED_DIRECTORY_DOES_NOT_EXIST"
-			ROOT_FOLDER=`find / -name 'web' -type d 2>/dev/null| grep 'transmission/web' | sed 's/\/web$//g'`
+			ROOT_FOLDER=`find / -name 'public_html' -type d 2>/dev/null| grep 'transmission/public_html' | sed 's/\/public_html$//g'`
 
 			if [ -d "$ROOT_FOLDER/web" ]; then
-				WEB_FOLDER="$ROOT_FOLDER/web"
+				WEB_FOLDER="$ROOT_FOLDER/public_html"
 				INSTALL_TYPE=1
 			fi
 		fi
